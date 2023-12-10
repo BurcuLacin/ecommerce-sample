@@ -9,13 +9,12 @@ import Loading from "../Loading";
 import Card from "../Card";
 
 const Products = () => {
-  const categories = ["all", "tops", "smartphones", "laptops"];
+  const categories = ["all", "1000", "1002", "1006"];
 
   const [category, setCategory] = useState("all");
   const dispatch = useAppDispatch();
   const products = useAppSelector((state) => state.productsSlice.products);
   const cartProducts = useAppSelector((state) => state.cartSlice.products);
-  console.log(products);
 
   useEffect(() => {
     if (category == "all") {

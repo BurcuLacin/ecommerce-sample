@@ -11,7 +11,7 @@ interface Props {
 }
 
 const Card = (props: Props) => {
-  const { id, image, title, price, description } = props.product;
+  const { id, image, name, price, description } = props.product;
 
   const dispatch = useAppDispatch();
 
@@ -27,13 +27,13 @@ const Card = (props: Props) => {
           src={image}
           width={300}
           height={300}
-          alt={title}
+          alt={name}
           loading="lazy"
           className="product-image"
         />
       </Link>
       <div className="flex justify-between items-center">
-        <h4 className="title">{title}</h4>
+        <h4 className="title">{name}</h4>
         <span className="price">{price}$</span>
       </div>
       <p className="description">{description}</p>
