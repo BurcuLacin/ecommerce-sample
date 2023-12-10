@@ -1,8 +1,8 @@
-import { createAsyncThunk, createSlice, PayloadAction } from '@reduxjs/toolkit';
-import axios from 'axios';
+import { createAsyncThunk, createSlice, PayloadAction } from "@reduxjs/toolkit";
+import axios from "axios";
 
 export const fetchProducts = createAsyncThunk(
-  'products/productsSlice',
+  "products/productsSlice",
   async (API_URL: string) => {
     const endpoint = `${API_URL}/products`;
     try {
@@ -11,11 +11,11 @@ export const fetchProducts = createAsyncThunk(
     } catch {
       console.log(Error);
     }
-  }
+  },
 );
 
 export const productsSlice = createSlice({
-  name: 'products',
+  name: "products",
   initialState: {
     products: [],
   },

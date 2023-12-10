@@ -1,5 +1,5 @@
-import { productType } from './../../../types.d';
-import { createSlice } from '@reduxjs/toolkit';
+import { productType } from "./../../../types.d";
+import { createSlice } from "@reduxjs/toolkit";
 
 type ProductCartType = {
   product: productType;
@@ -16,19 +16,19 @@ const initialState = {
 
 const cartSlice = createSlice({
   initialState: initialState,
-  name: 'cart',
+  name: "cart",
   reducers: {
     addToCart: (state, action) => {
       const newProduct = { product: action.payload, count: 1 };
       if (state.products.length == 0) {
         state.products.push(newProduct);
-        localStorage.setItem('cartProducts', JSON.stringify(newProduct));
+        localStorage.setItem("cartProducts", JSON.stringify(newProduct));
       } else {
         let isDuplicated = false;
 
         state.products.map(
           (item) =>
-            item.product.id == newProduct.product.id && (isDuplicated = true)
+            item.product.id == newProduct.product.id && (isDuplicated = true),
         );
 
         if (!isDuplicated) {
@@ -38,18 +38,18 @@ const cartSlice = createSlice({
     },
     incrementItem: (state, action) => {
       state.products.map(
-        (item) => item.product.id == action.payload && item.count++
+        (item) => item.product.id == action.payload && item.count++,
       );
     },
     decrementItem: (state, action) => {
       state.products.map(
         (item) =>
-          item.product.id == action.payload && item.count > 1 && item.count--
+          item.product.id == action.payload && item.count > 1 && item.count--,
       );
     },
     removeFromCart: (state, action) => {
       const updated = state.products.filter(
-        (item) => item.product.id != action.payload
+        (item) => item.product.id != action.payload,
       );
 
       return {
@@ -58,7 +58,7 @@ const cartSlice = createSlice({
       };
     },
     setCartProductsToLS: (state) => {
-      localStorage.setItem('cartProducts', JSON.stringify(state.products));
+      localStorage.setItem("cartProducts", JSON.stringify(state.products));
     },
     setCartProducts: (state, action) => {
       state.products = action.payload;
