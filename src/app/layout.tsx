@@ -1,8 +1,8 @@
-import './globals.scss';
-import { Providers } from '@/redux/provider';
-import { lazy } from 'react';
+import "./globals.scss";
+import { Providers } from "@/redux/provider";
+import { lazy } from "react";
 
-const Navbar = lazy(() => import('@/components/navbar/Navbar'));
+const Navbar = lazy(() => import("@/components/navbar/Navbar"));
 
 export default function RootLayout({
   children,
