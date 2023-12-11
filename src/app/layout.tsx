@@ -1,5 +1,8 @@
-import "./globals.scss";
-import { Providers } from "@/redux/provider";
+import './globals.scss';
+import { Providers } from '@/redux/provider';
+import { lazy } from 'react';
+
+const Navbar = lazy(() => import('@/components/navbar/Navbar'));
 
 export default function RootLayout({
   children,
@@ -12,7 +15,10 @@ export default function RootLayout({
         <title>E-commerce</title>
       </head>
       <body>
-        <Providers>{children}</Providers>
+        <Providers>
+          <Navbar />
+          {children}
+        </Providers>
       </body>
     </html>
   );
