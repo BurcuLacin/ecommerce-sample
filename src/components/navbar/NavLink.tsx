@@ -11,7 +11,7 @@ const NavLink = ({ link }: Props) => {
 
   return (
     <li className={`navLink ${pathname == link ? "active" : ""}`}>
-      <Link href={link} className="capitalize">
+      <Link href={link} className="capitalize text-white">
         {link}
       </Link>
     </li>
