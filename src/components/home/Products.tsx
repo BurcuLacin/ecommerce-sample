@@ -2,49 +2,77 @@
 
 import { useAppDispatch, useAppSelector } from "@/redux/hooks";
 import { fetchProducts } from "@/redux/slices/fetchProductsSlice";
+import { fetchCategories } from "@/redux/slices/fetchCategoriesSlice";
 import React, { useEffect, useState } from "react";
-import { productType } from "../../../types";
+import { productType, categoriesType } from "../../../types";
 import { API_URL } from "../../../constants";
 import Loading from "../Loading";
 import Card from "../Card";
 
 const Products = () => {
-  const categories = ["all", "1000", "1002", "1006"];
-
   const [category, setCategory] = useState("all");
+  const [sortCriteria, setSortCriteria] = useState("");
   const dispatch = useAppDispatch();
   const products = useAppSelector((state) => state.productsSlice.products);
-  const cartProducts = useAppSelector((state) => state.cartSlice.products);
+  const categories = useAppSelector(
+    (state) => state.categoriesSlice.categories,
+  );
+
+  const sortProducts = (products: productType[], criteria: string) => {
+    switch (criteria) {
+      case "priceAsc":
+        return [...products].sort((a, b) => a.price - b.price);
+      case "priceDesc":
+        return [...products].sort((a, b) => b.price - a.price);
+      default:
+        // Eğer 'popularity' kriterini kullanmak isterseniz, bu kısmı güncelleyin.
+        return [...products]; // Varsayılan durumda sıralama yapmayın
+    }
+  };
 
   useEffect(() => {
     if (category == "all") {
       dispatch(fetchProducts(API_URL));
     } else {
       dispatch(fetchProducts(`${API_URL}/category/${category}`));
+      debugger;
     }
-  }, [category]);
+  }, [category, dispatch]);
+
+  useEffect(() => {
+    dispatch(fetchCategories(API_URL));
+  }, []);
 
   return (
     <div className="container mt-8">
-      <div>
-        <ul className="flex gap-4 px-4">
-          {categories.map((item, index) => (
+      {/* <div>
+        <ul className=" px-4">
+          {categories.map((item: categoriesType) => (
             <li
-              key={index}
               onClick={() => {
-                setCategory(item);
+                setCategory(item.id);
               }}
-              className={`category-btn ${item == category ? "active" : ""}`}
+              className={`category-btn ${item.id == category ? "active" : ""}`}
             >
-              {item}
+              {item.name}
             </li>
           ))}
         </ul>
-      </div>
+      </div> */}
+
+      <select
+        value={sortCriteria}
+        onChange={(e) => setSortCriteria(e.target.value)}
+        className="select select-bordered bg-gray-100 outline-none w-full max-w-xs"
+      >
+        <option value="">Popularity</option>
+        <option value="priceAsc">Increasing Price</option>
+        <option value="priceDesc">Decreasing Price</option>
+      </select>
 
       <div className="flex flex-wrap justify-center gap-2 py-4">
-        {products.length != 0 ? (
-          products.map((item: productType) => (
+        {products.length !== 0 ? (
+          sortProducts(products, sortCriteria).map((item: productType) => (
             <Card key={item.id} product={item} />
           ))
         ) : (

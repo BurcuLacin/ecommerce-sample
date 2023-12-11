@@ -27,7 +27,7 @@ const Navbar = () => {
         >
           <SiHomeassistantcommunitystore size={20} />
           <h3 className="text-xl text-white font-semibold uppercase">
-            Burcu' Store
+            Burcu's Store
           </h3>
         </Link>
         <ul className="flex justify-center items-center gap-4">

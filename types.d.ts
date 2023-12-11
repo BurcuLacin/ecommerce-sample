@@ -11,3 +11,9 @@ export interface productType {
   image: string;
   images: string[];
 }
+
+export interface categoriesType {
+  id: number;
+  name: string;
+  description: string;
+}
