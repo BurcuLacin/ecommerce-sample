@@ -12,6 +12,10 @@ import Card from "../Card";
 const Products = () => {
   const [category, setCategory] = useState("all");
   const [sortCriteria, setSortCriteria] = useState("");
+
+  const [currentPage, setCurrentPage] = useState(1);
+  const [productsPerPage, setProductsPerPage] = useState(10); // Örnek olarak her sayfada 10 ürün
+
   const dispatch = useAppDispatch();
   const products = useAppSelector((state) => state.productsSlice.products);
   const categories = useAppSelector(
@@ -29,6 +33,30 @@ const Products = () => {
     }
   };
 
+  const indexOfLastProduct = currentPage * productsPerPage;
+  const indexOfFirstProduct = indexOfLastProduct - productsPerPage;
+  const currentProducts = products.slice(
+    indexOfFirstProduct,
+    indexOfLastProduct,
+  );
+
+  const pageNumbers = [];
+  for (let i = 1; i <= Math.ceil(products.length / productsPerPage); i++) {
+    pageNumbers.push(i);
+  }
+
+  const renderPageNumbers = pageNumbers.map((number) => {
+    return (
+      <button
+        key={number}
+        onClick={() => setCurrentPage(number)}
+        className="join-item btn w-12 h-12 m-0"
+      >
+        {number}
+      </button>
+    );
+  });
+
   useEffect(() => {
     if (category == "all") {
       dispatch(fetchProducts(API_URL));
@@ -43,7 +71,7 @@ const Products = () => {
   }, []);
 
   return (
-    <div className="container mt-8">
+    <div className="container my-8 pb-8">
       {/* <div>
         <ul className=" px-4">
           {categories.map((item: categoriesType) => (
@@ -59,24 +87,29 @@ const Products = () => {
         </ul>
       </div> */}
 
-      <select
-        value={sortCriteria}
-        onChange={(e) => setSortCriteria(e.target.value)}
-        className="select select-bordered bg-gray-100 outline-none w-full max-w-xs"
-      >
-        <option value="">Popularity</option>
-        <option value="priceAsc">Increasing Price</option>
-        <option value="priceDesc">Decreasing Price</option>
-      </select>
+      <div className="flex justify-end">
+        <select
+          value={sortCriteria}
+          onChange={(e) => setSortCriteria(e.target.value)}
+          className="select select-bordered bg-gray-100 outline-none w-full max-w-xs"
+        >
+          <option value="">Popularity</option>
+          <option value="priceAsc">Increasing Price</option>
+          <option value="priceDesc">Decreasing Price</option>
+        </select>
+      </div>
 
-      <div className="flex flex-wrap justify-center gap-2 py-4">
-        {products.length !== 0 ? (
-          sortProducts(products, sortCriteria).map((item: productType) => (
-            <Card key={item.id} product={item} />
-          ))
+      <div className="flex flex-wrap justify-between gap-2 py-4">
+        {currentProducts.length !== 0 ? (
+          sortProducts(currentProducts, sortCriteria).map(
+            (item: productType) => <Card key={item.id} product={item} />,
+          )
         ) : (
           <Loading />
         )}
+      </div>
+      <div className="flex justify-center">
+        <div className="join">{renderPageNumbers}</div>
       </div>
     </div>
   );

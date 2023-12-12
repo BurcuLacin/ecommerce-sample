@@ -26,9 +26,7 @@ const Navbar = () => {
           className="gap-1 flex items-center text-white !h-8 min-h-8 px-2 rounded-md"
         >
           <SiHomeassistantcommunitystore size={20} />
-          <h3 className="text-xl text-white font-semibold uppercase">
-            Burcu's Store
-          </h3>
+          <h3 className="text-xl text-white font-semibold uppercase">Store</h3>
         </Link>
         <ul className="flex justify-center items-center gap-4">
           <NavLink link="products" />
