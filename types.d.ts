@@ -1,15 +1,17 @@
 export interface productType {
-  id: number;
   name: string;
   description: string;
+  type: string;
   price: number;
-  discountPercentage: number;
-  rating: number;
-  stock: number;
-  brand: string;
-  category: string;
+  price_range: string;
+  id: number;
   image: string;
-  images: string[];
+  url: string;
+  free_shipping: string;
+  popularity: number;
+  categoryId: number;
+  rating: number;
+  brandId: number;
 }
 
 export interface categoriesType {

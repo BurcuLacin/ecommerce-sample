@@ -25,8 +25,7 @@ const Products = () => {
       case "priceDesc":
         return [...products].sort((a, b) => b.price - a.price);
       default:
-        // Eğer 'popularity' kriterini kullanmak isterseniz, bu kısmı güncelleyin.
-        return [...products]; // Varsayılan durumda sıralama yapmayın
+        return [...products];
     }
   };
 
