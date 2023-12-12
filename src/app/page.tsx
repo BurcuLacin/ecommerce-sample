@@ -1,7 +1,7 @@
-import { lazy } from 'react';
+import { lazy } from "react";
 
-const Banner = lazy(() => import('@/components/home/Banner'));
-const PopularProducts = lazy(() => import('@/components/home/Popularproducts'));
+const Banner = lazy(() => import("@/components/home/Banner"));
+const PopularProducts = lazy(() => import("@/components/home/Popularproducts"));
 
 export default function Home() {
   return (

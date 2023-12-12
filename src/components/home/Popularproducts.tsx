@@ -1,17 +1,17 @@
-'use client';
+"use client";
 
-import { useAppDispatch, useAppSelector } from '@/redux/hooks';
-import { fetchProducts } from '@/redux/slices/fetchProductsSlice';
-import React, { useEffect, useState } from 'react';
-import { productType } from '../../../types';
-import { API_URL } from '../../../constants';
-import Loading from '../Loading';
-import Card from '../Card';
+import { useAppDispatch, useAppSelector } from "@/redux/hooks";
+import { fetchProducts } from "@/redux/slices/fetchProductsSlice";
+import React, { useEffect, useState } from "react";
+import { productType } from "../../../types";
+import { API_URL } from "../../../constants";
+import Loading from "../Loading";
+import Card from "../Card";
 
 const PopulerProducts = () => {
   const dispatch = useAppDispatch();
   const products = useAppSelector(
-    (state) => state.productsSlice.products as productType[]
+    (state) => state.productsSlice.products as productType[],
   );
   console.log(products);
 
@@ -23,7 +23,7 @@ const PopulerProducts = () => {
   useEffect(() => {
     if (products.length != 0) {
       const sortedByPopularity = [...products].sort(
-        (a, b) => b.popularity - a.popularity
+        (a, b) => b.popularity - a.popularity,
       );
       setPopularProducts(sortedByPopularity.slice(0, 10));
     }
