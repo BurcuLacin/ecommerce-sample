@@ -1,8 +1,8 @@
 /** @type {import('next').NextConfig} */
 const config = {
-  experimental: {
-    serverActions: true,
-  },
+  // experimental: {
+  //   serverActions: true,
+  // },
   images: {
     domains: ['cdn-demo.algolia.com'],
   },

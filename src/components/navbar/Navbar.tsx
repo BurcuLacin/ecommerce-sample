@@ -1,18 +1,18 @@
-"use client";
-import React, { useEffect, useState } from "react";
-import NavLink from "./NavLink";
-import { SiHomeassistantcommunitystore } from "react-icons/si";
-import { BsCart } from "react-icons/bs";
-import Link from "next/link";
-import { useAppDispatch, useAppSelector } from "@/redux/hooks";
-import { setCartProducts } from "@/redux/slices/cartSlice";
+'use client';
+import React, { useEffect, useState } from 'react';
+import NavLink from './NavLink';
+import { IoStorefrontSharp } from 'react-icons/io5';
+import { BsCart } from 'react-icons/bs';
+import Link from 'next/link';
+import { useAppDispatch, useAppSelector } from '@/redux/hooks';
+import { setCartProducts } from '@/redux/slices/cartSlice';
 
 const Navbar = () => {
   const dispatch = useAppDispatch();
   const cartProducts = useAppSelector((state) => state.cartSlice.products);
 
   useEffect(() => {
-    const cartProductsFromLS = localStorage.getItem("cartProducts");
+    const cartProductsFromLS = localStorage.getItem('cartProducts');
     if (cartProductsFromLS != null) {
       dispatch(setCartProducts(JSON.parse(cartProductsFromLS)));
     }
@@ -25,12 +25,11 @@ const Navbar = () => {
           href="/"
           className="gap-1 flex items-center text-white !h-8 min-h-8 px-2 rounded-md"
         >
-          <SiHomeassistantcommunitystore size={20} />
+          <IoStorefrontSharp size={40} />
           <h3 className="text-xl text-white font-semibold uppercase">Store</h3>
         </Link>
         <ul className="flex justify-center items-center gap-4">
           <NavLink link="products" />
-          <NavLink link="categories" />
         </ul>
         <Link href="/cart" className="main-btn relative text-white">
           <span className="absolute w-4 h-4 top-0 right-0 flex justify-center items-center bg-blue-500 text-white font-semibold rounded-full ">
