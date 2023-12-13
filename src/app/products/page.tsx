@@ -1,6 +1,6 @@
-import React, { lazy } from 'react';
+import React, { lazy } from "react";
 
-const Products = lazy(() => import('@/components/Products'));
+const Products = lazy(() => import("@/components/Products"));
 
 const page = () => {
   return <Products />;

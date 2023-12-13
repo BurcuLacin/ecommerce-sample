@@ -1,8 +1,8 @@
-import { createAsyncThunk, createSlice } from '@reduxjs/toolkit';
-import axios from 'axios';
+import { createAsyncThunk, createSlice } from "@reduxjs/toolkit";
+import axios from "axios";
 
 export const fetchProductDetail = createAsyncThunk(
-  'productDetail/fetchProductDetail',
+  "productDetail/fetchProductDetail",
   async (API_URL: string) => {
     try {
       const response = await axios.get(API_URL);
@@ -10,17 +10,17 @@ export const fetchProductDetail = createAsyncThunk(
     } catch (error) {
       console.error(error);
     }
-  }
+  },
 );
 
 export const productDetailSlice = createSlice({
-  name: 'productDetail',
+  name: "productDetail",
   initialState: null,
   reducers: {},
   extraReducers: (builder) => {
     builder.addCase(
       fetchProductDetail.fulfilled,
-      (state, action) => (state = action.payload)
+      (state, action) => (state = action.payload),
     );
   },
 });

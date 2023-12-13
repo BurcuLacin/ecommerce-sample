@@ -1,9 +1,9 @@
-import React from 'react';
-import { usePathname } from 'next/navigation';
-import PageLink from '@/app/products/[id]/PageLink';
+import React from "react";
+import { usePathname } from "next/navigation";
+import PageLink from "@/app/products/[id]/PageLink";
 
 const Breadcrumb = () => {
-  const pathname = usePathname().split('/');
+  const pathname = usePathname().split("/");
   return (
     <div className="text-sm breadcrumbs">
       <ul>

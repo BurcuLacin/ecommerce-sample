@@ -1,33 +1,33 @@
-'use client';
+"use client";
 
-import { useAppDispatch, useAppSelector } from '@/redux/hooks';
-import { fetchProducts } from '@/redux/slices/fetchProductsSlice';
-import { fetchCategories } from '@/redux/slices/fetchCategoriesSlice';
-import React, { useEffect, useState } from 'react';
-import { productType, categoriesType } from '../../types';
-import { API_URL } from '../../constants';
-import Loading from './Loading';
-import Card from './Card';
-import Breadcrumb from './Breadcrumb';
+import { useAppDispatch, useAppSelector } from "@/redux/hooks";
+import { fetchProducts } from "@/redux/slices/fetchProductsSlice";
+import { fetchCategories } from "@/redux/slices/fetchCategoriesSlice";
+import React, { useEffect, useState } from "react";
+import { productType, categoriesType } from "../../types";
+import { API_URL } from "../../constants";
+import Loading from "./Loading";
+import Card from "./Card";
+import Breadcrumb from "./Breadcrumb";
 
 const Products = () => {
   const [category, setCategory] = useState(0);
 
-  const [sortCriteria, setSortCriteria] = useState('');
+  const [sortCriteria, setSortCriteria] = useState("");
 
   const [currentPage, setCurrentPage] = useState(1);
   const [productsPerPage, setProductsPerPage] = useState(10);
   const dispatch = useAppDispatch();
   const products = useAppSelector((state) => state.productsSlice.products);
   const categories = useAppSelector(
-    (state) => state.categoriesSlice.categories
+    (state) => state.categoriesSlice.categories,
   );
 
   const sortProducts = (products: productType[], criteria: string) => {
     switch (criteria) {
-      case 'priceAsc':
+      case "priceAsc":
         return [...products].sort((a, b) => a.price - b.price);
-      case 'priceDesc':
+      case "priceDesc":
         return [...products].sort((a, b) => b.price - a.price);
       default:
         return [...products];
@@ -38,7 +38,7 @@ const Products = () => {
   const indexOfFirstProduct = indexOfLastProduct - productsPerPage;
   const currentProducts = products.slice(
     indexOfFirstProduct,
-    indexOfLastProduct
+    indexOfLastProduct,
   );
 
   const pageNumbers = [];
@@ -96,7 +96,7 @@ const Products = () => {
                     setCategory(item.id);
                   }}
                   className={`category-btn ${
-                    item.id == category ? 'active' : ''
+                    item.id == category ? "active" : ""
                   }`}
                 >
                   {item.name}
@@ -109,7 +109,7 @@ const Products = () => {
           <div className="flex flex-wrap justify-between gap-2 py-4">
             {currentProducts.length !== 0 ? (
               sortProducts(currentProducts, sortCriteria).map(
-                (item: productType) => <Card key={item.id} product={item} />
+                (item: productType) => <Card key={item.id} product={item} />,
               )
             ) : (
               <Loading />

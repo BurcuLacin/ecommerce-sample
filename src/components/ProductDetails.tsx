@@ -1,28 +1,30 @@
-'use client';
+"use client";
 
-import React, { useEffect, useState } from 'react';
-import { usePathname } from 'next/navigation';
-import { useAppDispatch, useAppSelector } from '@/redux/hooks';
-import { fetchProductDetail } from '@/redux/slices/fetchProductDetailSlice';
-import { productType } from '../../types';
-import { API_URL } from '../../constants';
-import PageLink from '@/app/products/[id]/PageLink';
-import Loading from '@/components/Loading';
-import { MdAddCircleOutline } from 'react-icons/md';
-import { addToCart, setCartProductsToLS } from '@/redux/slices/cartSlice';
-import Image from 'next/image';
-import Breadcrumb from './Breadcrumb';
+import React, { useEffect, useState } from "react";
+import { usePathname } from "next/navigation";
+import { useAppDispatch, useAppSelector } from "@/redux/hooks";
+import { fetchProductDetail } from "@/redux/slices/fetchProductDetailSlice";
+import { productType } from "../../types";
+import { API_URL } from "../../constants";
+import PageLink from "@/app/products/[id]/PageLink";
+import Loading from "@/components/Loading";
+import { MdAddCircleOutline } from "react-icons/md";
+import { addToCart, setCartProductsToLS } from "@/redux/slices/cartSlice";
+import Image from "next/image";
+import Breadcrumb from "./Breadcrumb";
 
 const ProductDetails = () => {
   const [product, setProduct] = useState<productType | null>(null);
 
-  const pathname = usePathname().split('/');
+  const pathname = usePathname().split("/");
   const dispatch = useAppDispatch();
   const state = useAppSelector((state) => state.productDetailSlice);
 
   useEffect(() => {
     dispatch(
-      fetchProductDetail(`${API_URL}/products/${pathname.slice(-1).toString()}`)
+      fetchProductDetail(
+        `${API_URL}/products/${pathname.slice(-1).toString()}`,
+      ),
     );
   }, []);
 
