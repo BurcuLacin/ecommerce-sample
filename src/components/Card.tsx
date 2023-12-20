@@ -1,10 +1,10 @@
-import React from "react";
-import { productType } from "../../types";
-import { MdAddCircleOutline } from "react-icons/md";
-import { useAppDispatch, useAppSelector } from "@/redux/hooks";
-import { addToCart, setCartProductsToLS } from "@/redux/slices/cartSlice";
-import Link from "next/link";
-import Image from "next/image";
+import React from 'react';
+import { productType } from '../../types';
+import { MdAddCircleOutline } from 'react-icons/md';
+import { useAppDispatch, useAppSelector } from '@/redux/hooks';
+import { addToCart, setCartProductsToLS } from '@/redux/slices/cartSlice';
+import Link from 'next/link';
+import Image from 'next/image';
 
 interface Props {
   product: productType;
