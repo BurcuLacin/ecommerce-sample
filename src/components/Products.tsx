@@ -16,7 +16,7 @@ const Products = () => {
   const [sortCriteria, setSortCriteria] = useState('');
 
   const [currentPage, setCurrentPage] = useState(1);
-  const [productsPerPage, setProductsPerPage] = useState(10);
+  const [productsPerPage, setProductsPerPage] = useState(12);
   const dispatch = useAppDispatch();
   const products = useAppSelector((state) => state.productsSlice.products);
   const categories = useAppSelector(
@@ -68,12 +68,12 @@ const Products = () => {
 
   useEffect(() => {
     dispatch(fetchCategories(API_URL));
-  }, [2]);
+  }, []);
 
   return (
     <div className="container my-8 pb-8">
       <Breadcrumb />
-      <div className="flex justify-end">
+      <div className="flex justify-end pb-4">
         <select
           value={sortCriteria}
           onChange={(e) => setSortCriteria(e.target.value)}
@@ -86,26 +86,25 @@ const Products = () => {
         </select>
       </div>
       <div className="w-full flex">
-        <div className="">
-          <div>
-            <ul className=" px-4">
-              {categories.map((item: categoriesType) => (
-                <li
-                  onClick={() => {
-                    setCategory(item.id);
-                  }}
-                  className={`category-btn ${
-                    item.id == category ? 'active' : ''
-                  }`}
-                >
-                  {item.name}
-                </li>
-              ))}
-            </ul>
-          </div>
+        <div className=" filters pr-8">
+          <ul className="w-48 text-sm font-medium bg-white border border-gray-200 rounded-lg ">
+            {categories.map((item: categoriesType) => (
+              <li
+                onClick={() => {
+                  setCategory(item.id);
+                }}
+                className={`category-btn w-full px-4 py-2 border-b border-gray-200 ${
+                  item.id == category ? 'active' : ''
+                }`}
+                key={item.id}
+              >
+                {item.name}
+              </li>
+            ))}
+          </ul>
         </div>
-        <div className="col-span-2">
-          <div className="flex flex-wrap justify-between gap-2 py-4">
+        <div className="">
+          <div className="flex flex-wrap justify-between  pb-4">
             {currentProducts.length !== 0 ? (
               sortProducts(currentProducts, sortCriteria).map(
                 (item: productType) => <Card key={item.id} product={item} />

@@ -6,6 +6,7 @@ import { BsCart } from 'react-icons/bs';
 import Link from 'next/link';
 import { useAppDispatch, useAppSelector } from '@/redux/hooks';
 import { setCartProducts } from '@/redux/slices/cartSlice';
+import Search from './Search';
 
 const Navbar = () => {
   const dispatch = useAppDispatch();
@@ -19,7 +20,7 @@ const Navbar = () => {
   }, []);
 
   return (
-    <nav className="navbar text-gray-900 bg-orange-400 sticky top-0 z-10">
+    <nav className="navbar text-gray-900 bg-orange-400 sticky top-0 z-20">
       <div className="w-full h-6 flex justify-between items-center px-4">
         <Link
           href="/"
@@ -31,6 +32,7 @@ const Navbar = () => {
         <ul className="flex justify-center items-center gap-4">
           <NavLink link="products" />
         </ul>
+        <Search />
         <Link href="/cart" className="main-btn relative text-white">
           <span className="absolute w-4 h-4 top-0 right-0 flex justify-center items-center bg-blue-500 text-white font-semibold rounded-full ">
             {cartProducts.length}

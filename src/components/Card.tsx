@@ -47,7 +47,7 @@ const Card = (props: Props) => {
     //     Cart
     //   </button>
     // </div>
-    <div className="card w-96 bg-base-100 shadow-xl">
+    <div className="card w-96 bg-base-100 shadow-xl mb-4">
       <Link href={`products/${id}`}>
         <figure>
           <Image
@@ -71,7 +71,7 @@ const Card = (props: Props) => {
               onClick={() => {
                 handleAddToCart();
               }}
-              className="cart btn"
+              className="cart btn z-10"
             >
               Buy Now
             </button>
