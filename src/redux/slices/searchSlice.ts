@@ -2,7 +2,6 @@ import { createAsyncThunk, createSlice } from '@reduxjs/toolkit';
 import { productType } from '../../../types';
 import { API_URL } from '../../../constants';
 import axios from 'axios';
-import { log } from 'console';
 
 type searchState = {
   results: productType[];
@@ -20,7 +19,7 @@ export const fetchSearchProducts = createAsyncThunk(
       console.log(data);
       return data;
     } catch {
-      return rejectWithValue([]);
+      console.log(Error);
     }
   }
 );

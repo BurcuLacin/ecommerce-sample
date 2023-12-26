@@ -59,7 +59,7 @@ const Card = (props: Props) => {
             className="product-image"
           />
         </figure>
-        <div className="card-body">
+        <div className="card-body px-2">
           <div className="flex justify-between items-center">
             <h4 className="card-title title">{name}</h4>
             <span className="price">{price}$</span>

@@ -20,8 +20,8 @@ const Navbar = () => {
   }, []);
 
   return (
-    <nav className="navbar text-gray-900 bg-orange-400 sticky top-0 z-20">
-      <div className="w-full h-6 flex justify-between items-center px-4">
+    <div className="navbar text-gray-900 bg-orange-400 sticky top-0 z-20">
+      <div className="flex-1">
         <Link
           href="/"
           className="gap-1 flex items-center text-white !h-8 min-h-8 px-2 rounded-md"
@@ -29,9 +29,8 @@ const Navbar = () => {
           <IoStorefrontSharp size={40} />
           <h3 className="text-xl text-white font-semibold uppercase">Store</h3>
         </Link>
-        <ul className="flex justify-center items-center gap-4">
-          <NavLink link="products" />
-        </ul>
+      </div>
+      <div className="flex-none gap-2">
         <Search />
         <Link href="/cart" className="main-btn relative text-white">
           <span className="absolute w-4 h-4 top-0 right-0 flex justify-center items-center bg-blue-500 text-white font-semibold rounded-full ">
@@ -40,7 +39,7 @@ const Navbar = () => {
           <BsCart size={22} />
         </Link>
       </div>
-    </nav>
+    </div>
   );
 };
 
