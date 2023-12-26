@@ -7,7 +7,7 @@ const Footer = () => {
     <footer className="footer bg-orange-400 footer-center text-white p-10 ">
       <Link
         href="/"
-        className="gap-1 flex items-center text-white !h-8 min-h-8 px-2 rounded-md"
+        className="gap-1 flex  items-center text-white !h-8 min-h-8 px-2 rounded-md"
       >
         <IoStorefrontSharp size={40} />
         <h3 className="text-xl text-white font-semibold uppercase">Store</h3>

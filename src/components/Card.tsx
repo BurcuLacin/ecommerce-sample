@@ -3,6 +3,7 @@ import { productType } from '../../types';
 import { MdAddCircleOutline } from 'react-icons/md';
 import { useAppDispatch, useAppSelector } from '@/redux/hooks';
 import { addToCart, setCartProductsToLS } from '@/redux/slices/cartSlice';
+import { addRecentlyViewed } from '@/redux/slices/recentlyViewedSlice';
 import Link from 'next/link';
 import Image from 'next/image';
 
@@ -47,7 +48,12 @@ const Card = (props: Props) => {
     //     Cart
     //   </button>
     // </div>
-    <div className="card w-96 bg-base-100 shadow-xl mb-4">
+    <div
+      className="card w-96 bg-base-100 shadow-xl mb-4"
+      onClick={() => {
+        dispatch(addRecentlyViewed(props.product));
+      }}
+    >
       <Link href={`products/${id}`}>
         <figure>
           <Image

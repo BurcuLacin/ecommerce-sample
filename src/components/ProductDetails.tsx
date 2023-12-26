@@ -12,6 +12,7 @@ import { MdAddCircleOutline } from 'react-icons/md';
 import { addToCart, setCartProductsToLS } from '@/redux/slices/cartSlice';
 import Image from 'next/image';
 import Breadcrumb from './Breadcrumb';
+import RecentlyViewed from './RecentlyViewed';
 
 const ProductDetails = () => {
   const [product, setProduct] = useState<productType | null>(null);
@@ -33,7 +34,7 @@ const ProductDetails = () => {
   }, [state]);
 
   return (
-    <div className="container h-[calc(100vh-160px)]">
+    <div className="container">
       <Breadcrumb />
       <div className="w-full flex flex-col justify-center">
         {product != null ? (
@@ -77,6 +78,7 @@ const ProductDetails = () => {
           </div>
         )}
       </div>
+      <RecentlyViewed />
     </div>
   );
 };

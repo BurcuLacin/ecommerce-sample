@@ -22,7 +22,6 @@ const Cart = () => {
     }, 1000);
   };
 
-  // For loading cart products and dispatch it to the state.
   useEffect(() => {
     const cartProductsFromLS = localStorage.getItem('cartProducts');
     if (cartProductsFromLS != null) {
@@ -31,7 +30,6 @@ const Cart = () => {
     handleLoading();
   }, []);
 
-  // If the user modified the product cart, then update local storage data.
   useEffect(() => {
     dispatch(setCartProductsToLS());
   }, [cartProducts]);
