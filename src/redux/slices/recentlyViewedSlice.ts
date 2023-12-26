@@ -6,7 +6,7 @@ type RecentlyViewedType = {
 };
 
 const initialState = {
-  recentlyViewed: JSON.parse(localStorage.getItem('recentlyViewed') || '[]'),
+  recentlyViewed: [],
 } as RecentlyViewedType;
 
 const recentlyViewedSlice = createSlice({
@@ -14,10 +14,10 @@ const recentlyViewedSlice = createSlice({
   initialState: initialState,
   reducers: {
     addRecentlyViewed: (state, action: PayloadAction<productType>) => {
-      const exists = state.recentlyViewed.find(
+      const newProduct = state.recentlyViewed.find(
         (product) => product.id === action.payload.id
       );
-      if (!exists) {
+      if (!newProduct) {
         state.recentlyViewed = [action.payload, ...state.recentlyViewed].slice(
           0,
           5
