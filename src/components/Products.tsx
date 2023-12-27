@@ -40,7 +40,6 @@ const Products = () => {
     indexOfFirstProduct,
     indexOfLastProduct
   );
-  debugger;
 
   const pageNumbers = [];
   for (let i = 1; i <= Math.ceil(products.length / productsPerPage); i++) {
