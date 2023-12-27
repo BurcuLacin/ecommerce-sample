@@ -6,7 +6,7 @@ type RecentlyViewedType = {
 };
 
 const initialState = {
-  recentlyViewed: [],
+  recentlyViewed: JSON.parse(localStorage.getItem('recentlyViewed') || '[]'),
 } as RecentlyViewedType;
 
 const recentlyViewedSlice = createSlice({

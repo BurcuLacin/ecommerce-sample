@@ -23,9 +23,9 @@ const Cart = () => {
   };
 
   useEffect(() => {
-    const cartProductsFromLS = localStorage.getItem('cartProducts');
-    if (cartProductsFromLS != null) {
-      dispatch(setCartProducts(JSON.parse(cartProductsFromLS)));
+    const cartProductsFrom = localStorage.getItem('cartProducts');
+    if (cartProductsFrom != null) {
+      dispatch(setCartProducts(JSON.parse(cartProductsFrom)));
     }
     handleLoading();
   }, []);
@@ -80,7 +80,7 @@ const Cart = () => {
             </div>
             <div className="mt-2 mx-4 max-w-[300px]">
               <div className="p-4 [&>div]:flex [&>div]:items-center [&>div]:gap-2 [&>div>h3]:!text-gray-300 [&>div>h3]:uppercase [&>div>span]:text-white [&>div>h3]:font-semibold [&>div>span]:font-semibold bg-[#2a303c] rounded-lg">
-                <div>
+                <div className="">
                   <h3>Count:</h3>
                   <span>{cartProducts.length}</span>
                 </div>

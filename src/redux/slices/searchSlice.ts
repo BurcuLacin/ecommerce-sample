@@ -16,7 +16,6 @@ export const fetchSearchProducts = createAsyncThunk(
   async (q: string) => {
     try {
       const { data } = await axios.get(`${API_URL}/products?name=${q}`);
-      console.log(data);
       return data;
     } catch {
       console.log(Error);

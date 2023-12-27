@@ -11,7 +11,7 @@ type productsType = {
 };
 
 const initialState = {
-  products: [],
+  products: JSON.parse(localStorage.getItem('cartProducts') || '[]'),
 } as productsType;
 
 const cartSlice = createSlice({

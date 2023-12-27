@@ -12,9 +12,6 @@ const RecentlyViewed = () => {
   );
   console.log(recentlyViewedProducts);
 
-  const dispatch = useAppDispatch();
-  const [isLoading, setIsLoading] = useState(true);
-
   return (
     <div className="mt-10">
       <h2 className="text-xl font-bold mb-4">Recently Viewed</h2>

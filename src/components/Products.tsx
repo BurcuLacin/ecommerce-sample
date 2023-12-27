@@ -16,9 +16,9 @@ const Products = () => {
   const [sortCriteria, setSortCriteria] = useState('');
 
   const [currentPage, setCurrentPage] = useState(1);
-  const [productsPerPage, setProductsPerPage] = useState(12);
   const dispatch = useAppDispatch();
   const products = useAppSelector((state) => state.productsSlice.products);
+  const [productsPerPage, setProductsPerPage] = useState(12);
   const categories = useAppSelector(
     (state) => state.categoriesSlice.categories
   );
@@ -40,6 +40,7 @@ const Products = () => {
     indexOfFirstProduct,
     indexOfLastProduct
   );
+  debugger;
 
   const pageNumbers = [];
   for (let i = 1; i <= Math.ceil(products.length / productsPerPage); i++) {
@@ -64,7 +65,7 @@ const Products = () => {
     } else {
       dispatch(fetchProducts(`${API_URL}/category/${category}`));
     }
-  }, [category, dispatch]);
+  }, [category]);
 
   useEffect(() => {
     dispatch(fetchCategories(API_URL));

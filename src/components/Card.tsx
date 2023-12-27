@@ -1,7 +1,6 @@
 import React from 'react';
 import { productType } from '../../types';
-import { MdAddCircleOutline } from 'react-icons/md';
-import { useAppDispatch, useAppSelector } from '@/redux/hooks';
+import { useAppDispatch } from '@/redux/hooks';
 import { addToCart, setCartProductsToLS } from '@/redux/slices/cartSlice';
 import { addRecentlyViewed } from '@/redux/slices/recentlyViewedSlice';
 import Link from 'next/link';
@@ -22,32 +21,6 @@ const Card = (props: Props) => {
   };
 
   return (
-    // <div className="card">
-    //   <Link href={`products/${id}`}>
-    //     <Image
-    //       src={image}
-    //       width={300}
-    //       height={300}
-    //       alt={name}
-    //       loading="lazy"
-    //       className="product-image"
-    //     />
-    //   </Link>
-    //   <div className="flex justify-between items-center">
-    //     <h4 className="title">{name}</h4>
-    //     <span className="price">{price}$</span>
-    //   </div>
-    //   <p className="description">{description}</p>
-    //   <button
-    //     onClick={() => {
-    //       handleAddToCart();
-    //     }}
-    //     className="btn cart"
-    //   >
-    //     <MdAddCircleOutline size={20} />
-    //     Cart
-    //   </button>
-    // </div>
     <div
       className="card w-96 bg-base-100 shadow-xl mb-4"
       onClick={() => {
@@ -68,16 +41,16 @@ const Card = (props: Props) => {
         <div className="card-body px-2">
           <div className="flex justify-between items-center">
             <h4 className="card-title title">{name}</h4>
-            <span className="price">{price}$</span>
           </div>
 
           <p className="description">{description}</p>
-          <div className="card-actions justify-end">
+          <div className="card-actions justify-between items-end">
+            <span className="price">{price}$</span>
             <button
               onClick={() => {
                 handleAddToCart();
               }}
-              className="cart btn z-10"
+              className="cart btn z-10 "
             >
               Buy Now
             </button>

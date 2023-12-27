@@ -6,7 +6,6 @@ import { useAppDispatch, useAppSelector } from '@/redux/hooks';
 import { fetchProductDetail } from '@/redux/slices/fetchProductDetailSlice';
 import { productType } from '../../types';
 import { API_URL } from '../../constants';
-import PageLink from '@/app/products/[id]/PageLink';
 import Loading from '@/components/Loading';
 import { MdAddCircleOutline } from 'react-icons/md';
 import { addToCart, setCartProductsToLS } from '@/redux/slices/cartSlice';
